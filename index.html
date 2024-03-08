@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport” content="width=device-width,initial-scale=1.0">
+    <title>Personal Portfolio Website - Hitayu Parikh</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/78249b9881.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="header">
+    <div class="container">
+        <nav>
+            <img src="images/logo.png" class="logo">
+            <ul>
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Playlist</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-text">
+            <p>Hitayu's Portfolio</p>
+            <h1>Hi, I'm <span>Hitayu</span><br>Parikh</h1>
+        </div>
+    </div>
+</div>
+<!-- -----------about-------------- -->
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                <img src="images/user.png">
+            </div>
+            <div class="about-col-2">
+                <h1 class="sub-title">About Me</h1>
+                <p>Hey, I'm Hitayu Parikh. I am currently a Senior 
+                here at Colonia High School, and I am 17 years old. 
+                Curiosity and happiness define me. For some reason, 
+                mornings are my favorite. Strong iced coffee is one 
+                of my favorite beverages. In my spare time, I enjoy 
+                listening to music while swinging. I enjoy coding, 
+                but it can be annoying when you have to hunt for a 
+                semicolon or a missing letter.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- -----------Links-------------- -->
+<div id="portfolio">
+    <div class="container">
+        <h1 class="sub-title">My Playlist</h1>
+        <div class="work-list">
+            <div class="work">
+                <img src="images/work-1.png">
+                <div class="layer">
+                    <h3>Hype</h3>
+                    <p>Bollywood music that will hype you up.</p>
+                    <a href="https://youtube.com/playlist?list=PLj1K-Cq7laoxK66e44YHkgBS-XPGeMQwG"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/work-2.png">
+                <div class="layer">
+                    <h3>Ok</h3>
+                    <p>Random recently added songs.</p>
+                    <a href="https://youtube.com/playlist?list=PLj1K-Cq7laozNIMpJdxM13vpn0POEHYlz"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/work-3.png">
+                <div class="layer">
+                    <h3>Car Music</h3>
+                    <p>Hindi Lofi car Music</p>
+                    <a href="https://youtube.com/playlist?list=PLj1K-Cq7laozgfRiOprK1UjQeSGxstgVd"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/work-4.png">
+                <div class="layer">
+                    <h3>Afternoon</h3>
+                    <p>Afternoon vibe</p>
+                    <a href="https://youtube.com/playlist?list=PLj1K-Cq7laowrHZgkcmi-tfRFpcq0C9YO"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="btn">See more</a>
+    </div>
+</div>
+<!-- -----------contact------------- -->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fas fa-paper-plane"></i> parikhhitayu11@gmail.com</p>
+                <p><i class="fas fa-phone-square"></i> +1(732) 318-0087</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/hitayu12/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://t.snapchat.com/cjnRilM8"><i class="fab fa-snapchat"></i></a>
+                    <a href="https://www.tiktok.com/@tt_batman12?_t=8XBlnTPX0Qs&_r=1"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://dsc.bio/doggerman"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button> 
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright © Hitayu. Made with <i class="fas fa-heart"></i> by Hitayu Parikh</p>
+    </div>
+</div>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw-rgjYD3Q4zMAlsQDgScQSd94Hyf6vN5jHC0hvAU6ZeXEJAfgkhcBeNutbnifV34kA/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg= document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+  
+
+</body>
+</html>
